@@ -14,6 +14,6 @@ public class EvenBetterController {
             @PathVariable(name="pathValue") Optional<String> pathValue,
             @RequestParam(required=false) Optional<String> requestValue
     ) {
-
+        return pathValue.map(ResponseEntity::ok).orElseGet(() -> requestValue.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build()));
     }
 }

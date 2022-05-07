@@ -1,24 +1,30 @@
-package pl.pjatk.micsiwe;
+package pl.pjatk.micsiwe.car.controller;
 
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.pjatk.micsiwe.car.model.Car;
+import pl.pjatk.micsiwe.car.service.CarService;
 
 import java.util.Arrays;
 import java.util.List;
 
 @RestController
 @RequestMapping("/test")
-public class BestRestController {
+public class CarController {
+    public final CarService carService;
+
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
 
     @GetMapping("/hello")
     public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("Hello world");
+        return ResponseEntity.ok(this.carService.getHelloWorldText());
     }
 
     @GetMapping("/getEmptyCar")
     public ResponseEntity<Car> getEmptyCar() {
-        return ResponseEntity.ok(new Car());
+        return ResponseEntity.ok(this.carService.getEmptyCarObject());
     }
 
     @GetMapping("/getInputParam/{someValue}")
@@ -33,14 +39,12 @@ public class BestRestController {
 
     @GetMapping("/getRequestInputParamList")
     public ResponseEntity<String> getRequestInputParamList(@RequestParam List<String> someValues) {
-        return ResponseEntity.ok(Arrays.toString(someValues.toArray()));
+        return ResponseEntity.ok(this.carService.getListString(someValues));
     }
 
     @PostMapping("/createPOSTCar")
     public ResponseEntity<Car> createPOSTCar(String model, int productionYear) {
-        Car car = new Car(model, productionYear);
-
-        return ResponseEntity.ok(car);
+        return ResponseEntity.ok(this.carService.getCarObject(model, productionYear));
     }
 
     @PostMapping("/createPOSTCar2")

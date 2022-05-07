@@ -1,10 +1,11 @@
-package pl.pjatk.micsiwe;
+package pl.pjatk.micsiwe.pojo.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import pl.pjatk.micsiwe.ProfileBean;
+import pl.pjatk.micsiwe.pojo.model.Pojo;
 
 import java.util.Arrays;
 import java.util.List;

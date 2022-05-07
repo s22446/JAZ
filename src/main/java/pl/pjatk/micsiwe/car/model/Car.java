@@ -1,4 +1,4 @@
-package pl.pjatk.micsiwe;
+package pl.pjatk.micsiwe.car.model;
 
 public class Car {
     private String model;

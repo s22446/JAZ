@@ -1,4 +1,4 @@
-package pl.pjatk.micsiwe;
+package pl.pjatk.micsiwe.pojo.model;
 
 public class Pojo {
     private String someString, someString2;
